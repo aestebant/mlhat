@@ -1,0 +1,16 @@
+name: mlhat
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy=1.23
+  - scipy>=1.5
+  - pandas>=1.3
+  - sktime>=0.17
+  - signac
+  - signac-flow
+  - h5py
+  - ipython
+  - pip
+  - pip:
+    - river>=0.15
