@@ -9,7 +9,7 @@ from river.tree.splitter import GaussianSplitter, Splitter
 from river.utils.random import poisson
 
 from .nodes.ml_branches import MLHAToCBranch, MLHAToCBranchNomBinary, MLHAToCBranchNomMultiway, MLHAToCBranchNumBinary, MLHAToCBranchNumMultiway
-from .nodes.ml_leafs import MLHATLeaf
+from .nodes.ml_leaves import MLHATLeaf
 from .split_criterion.ml_info_gain import MultiLabelSplitCriterion
 
 

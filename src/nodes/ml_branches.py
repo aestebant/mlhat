@@ -3,7 +3,7 @@ import typing
 from river import stats as st
 from river.tree.nodes import branch
 
-from .ml_leafs import AdaLeafMultiLabel
+from .ml_leaves import AdaLeafMultiLabel
 from .ml_node import MultiLabelAdaptiveNode
 
 
