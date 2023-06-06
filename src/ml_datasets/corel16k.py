@@ -1,5 +1,5 @@
-from river import stream
 from river.datasets import base
+import stream
 
 
 class Corel16k(base.RemoteDataset):

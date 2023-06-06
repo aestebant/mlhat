@@ -1,5 +1,5 @@
-from river import stream
 from river.datasets import base
+import stream
 
 
 class Chd(base.RemoteDataset):
@@ -17,7 +17,7 @@ class Chd(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/CHD_49_Meka.zip",
             unpack=True,
             filename="CHD_49.arff",
-            size=79_523,
+            size=79_474,
         )
     
     def _iter(self):
