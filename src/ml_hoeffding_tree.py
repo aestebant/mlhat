@@ -5,12 +5,12 @@ from collections import defaultdict
 from river import base
 from river.drift import ADWIN
 from river.tree import HoeffdingTreeClassifier
+from river.tree.hoeffding_tree import HoeffdingTree
 from river.tree.splitter import GaussianSplitter, Splitter
 from river.utils.random import poisson
 
-from .nodes.ml_branches import MLHAToCBranch, MLHAToCBranchNomBinary, MLHAToCBranchNomMultiway, MLHAToCBranchNumBinary, MLHAToCBranchNumMultiway
-from .nodes.ml_leaves import MLHATLeaf
-from .split_criterion.ml_info_gain import MultiLabelSplitCriterion
+from nodes import MLHATBranch, MLHATBranchNomBinary, MLHATBranchNomMultiway, MLHATBranchNumBinary, MLHATBranchNumMultiway, MLHATLeaf
+from split_criterion import MultiLabelSplitCriterion
 
 
 class MultiLabelHoeffdingAdaptiveTree(HoeffdingTreeClassifier, base.MultiLabelClassifier):
@@ -47,19 +47,21 @@ class MultiLabelHoeffdingAdaptiveTree(HoeffdingTreeClassifier, base.MultiLabelCl
         seed: int = 0,
     ):
         super().__init__(
-            None,
-            grace_period,
-            max_depth,
-            delta,
-            tau,
-            nominal_attributes,
-            splitter,
-            binary_split,
-            max_size,
-            memory_estimate_period,
-            stop_mem_management,
-            remove_poor_attrs,
-            merit_preprune,
+            grace_period=grace_period,
+            max_depth=max_depth,
+            split_criterion="",
+            delta=delta,
+            tau=tau,
+            leaf_prediction="",
+            nb_threshold=0,
+            nominal_attributes=nominal_attributes,
+            splitter=splitter,
+            binary_split=binary_split,
+            max_size=max_size,
+            memory_estimate_period=memory_estimate_period,
+            stop_mem_management=stop_mem_management,
+            remove_poor_attrs=remove_poor_attrs,
+            merit_preprune=merit_preprune,
         )
         self.bootstrap_sampling = bootstrap_sampling
         self.poisson_rate = poisson_rate
@@ -118,7 +120,7 @@ class MultiLabelHoeffdingAdaptiveTree(HoeffdingTreeClassifier, base.MultiLabelCl
                 proba[label][val] = 0.0
         if self._root is not None:
             found_nodes = [self._root]
-            if isinstance(self._root, MLHAToCBranch):
+            if isinstance(self._root, MLHATBranch):
                 found_nodes = self._root.traverse(x, until_leaf=True)
             # Combine the response of all leaves reached (weighted according concept drift detector)
             for leaf in found_nodes:
@@ -144,7 +146,7 @@ class MultiLabelHoeffdingAdaptiveTree(HoeffdingTreeClassifier, base.MultiLabelCl
     def _attempt_to_split(
         self,
         leaf: MLHATLeaf,
-        parent: MLHAToCBranch,
+        parent: MLHATBranch,
         parent_branch: int,
         drift_detector: base.DriftDetector,
         is_background: bool,
@@ -247,13 +249,13 @@ class MultiLabelHoeffdingAdaptiveTree(HoeffdingTreeClassifier, base.MultiLabelCl
 
     def _branch_selector(self, numerical_feature=True, multiway_split=False):
         if numerical_feature and multiway_split:
-            return MLHAToCBranchNumMultiway
+            return MLHATBranchNumMultiway
         elif numerical_feature and not multiway_split:
-            return MLHAToCBranchNumBinary
+            return MLHATBranchNumBinary
         elif not numerical_feature and multiway_split:
-            return MLHAToCBranchNomMultiway
+            return MLHATBranchNomMultiway
         elif not numerical_feature and not multiway_split:
-            return MLHAToCBranchNomBinary
+            return MLHATBranchNomBinary
 
     @property
     def summary(self):

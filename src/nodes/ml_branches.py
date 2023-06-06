@@ -3,11 +3,11 @@ import typing
 from river import stats as st
 from river.tree.nodes import branch
 
-from .ml_leaves import AdaLeafMultiLabel
 from .ml_node import MultiLabelAdaptiveNode
+from .ml_leaves import AdaLeafMultiLabel
 
 
-class MLHAToCBranch(MultiLabelAdaptiveNode, branch.DTBranch):
+class MLHATBranch(MultiLabelAdaptiveNode, branch.DTBranch):
     def __init__(self, stats, *children, drift_detector, is_background, **attributes):
         super().__init__(stats, *children, **attributes)
         self.drift_detector = drift_detector
@@ -18,8 +18,8 @@ class MLHAToCBranch(MultiLabelAdaptiveNode, branch.DTBranch):
     def traverse(self, x, until_leaf=True):
         found_nodes: typing.List[AdaLeafMultiLabel] = []
         for node in self.walk(x, until_leaf=until_leaf):
-            if isinstance(node, MLHAToCBranch) and node._alternate_tree:
-                if isinstance(node._alternate_tree, MLHAToCBranch):
+            if isinstance(node, MLHATBranch) and node._alternate_tree:
+                if isinstance(node._alternate_tree, MLHATBranch):
                     found_nodes.append(node._alternate_tree.traverse(x, until_leaf=until_leaf))
                 else:
                     found_nodes.append(node._alternate_tree)
@@ -29,7 +29,7 @@ class MLHAToCBranch(MultiLabelAdaptiveNode, branch.DTBranch):
     def iter_leaves(self):
         for child in self.children:
             yield from child.iter_leaves()
-            if isinstance(child, MLHAToCBranch) and child._alternate_tree:
+            if isinstance(child, MLHATBranch) and child._alternate_tree:
                 yield from child._alternate_tree.iter_leaves()
 
     def manage_alternate_tree(self, x, y, tree, p_node, p_branch):
@@ -91,7 +91,7 @@ class MLHAToCBranch(MultiLabelAdaptiveNode, branch.DTBranch):
                     tree._n_switch_alternate_trees += 1
                 # Prune an alternate tree
                 elif alt_error_rate - old_error_rate > bound:
-                    if isinstance(self._alternate_tree, MLHAToCBranch):
+                    if isinstance(self._alternate_tree, MLHATBranch):
                         self._alternate_tree.kill_tree_children(tree)
                     self._alternate_tree = None
                     tree._n_pruned_alternate_trees += 1
@@ -161,21 +161,21 @@ class MLHAToCBranch(MultiLabelAdaptiveNode, branch.DTBranch):
             child.move_to_frontground()
 
 
-class MLHAToCBranchNomBinary(MLHAToCBranch, branch.NominalBinaryBranch):
+class MLHATBranchNomBinary(MLHATBranch, branch.NominalBinaryBranch):
     def __init__(self, stats, feature, value, depth, left, right, **kwargs):
         super().__init__(stats, feature, value, depth, left, right, **kwargs)
 
 
-class MLHAToCBranchNumBinary(MLHAToCBranch, branch.NumericBinaryBranch):
+class MLHATBranchNumBinary(MLHATBranch, branch.NumericBinaryBranch):
     def __init__(self, stats, feature, threshold, depth, left, right, **kwargs):
         super().__init__(stats, feature, threshold, depth, left, right, **kwargs)
 
 
-class MLHAToCBranchNomMultiway(MLHAToCBranch, branch.NominalMultiwayBranch):
+class MLHATBranchNomMultiway(MLHATBranch, branch.NominalMultiwayBranch):
     def __init__(self, stats, feature, feature_values, depth, *children, **kwargs):
         super().__init__(stats, feature, feature_values, depth, *children, **kwargs)
 
 
-class MLHAToCBranchNumMultiway(MLHAToCBranch, branch.NumericMultiwayBranch):
+class MLHATBranchNumMultiway(MLHATBranch, branch.NumericMultiwayBranch):
     def __init__(self, stats, feature, radius_and_slots, depth, *children, **kwargs):
         super().__init__(stats, feature, radius_and_slots, depth, *children, **kwargs)

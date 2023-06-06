@@ -6,9 +6,8 @@ from river.tree.nodes import htc_nodes
 from river.utils.random import poisson
 from river.tree.utils import round_sig_fig
 
-from .ml_node import MultiLabelNode, MultiLabelAdaptiveNode
-from ..leaf_classifiers.binary_relevance import BinaryRelevance
-from ..leaf_classifiers.majority import MajorityLabelset
+from .ml_node import MultiLabelAdaptiveNode, MultiLabelNode
+from leaf_classifiers import BinaryRelevance, MajorityLabelset
 
 
 class LeafMultiLabel(MultiLabelNode, htc_nodes.LeafMajorityClass):
