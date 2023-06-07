@@ -262,3 +262,25 @@ class MLHATLeaf(MultiLabelAdaptiveNode, htc_nodes.LeafMajorityClass):
 
     def kill_tree_children(self, tree):
         pass
+
+    def __repr__(self):
+        if not self.stats:
+            return ""
+        mls = self.mls.predict_one(None)
+        if mls:
+            to_show = [k for k, v in mls.items() if v]
+        else:
+            to_show = None
+        text = f"Majority LS: {to_show}\n"
+
+        if self.observed_class_distribution_is_pure():
+            text += "Classifier: majority"
+        elif self.total_weight < 10:
+            text += "Classifier: KNN"
+        else:
+            text += "Classifier: SRP(LogisticRegression)"
+
+        for label, proba in sorted({k: v for (k, v) in self.stats.items() if k != "total"}.items()):
+            text += f"\n\tP({label}) = {round_sig_fig(proba/self.stats['total'])}"
+        
+        return text

@@ -1,6 +1,7 @@
 import math
 import random
 from collections import defaultdict
+import typing
 
 from river import base
 from river.drift import ADWIN
@@ -63,6 +64,7 @@ class MultiLabelHoeffdingAdaptiveTree(HoeffdingTreeClassifier, base.MultiLabelCl
             remove_poor_attrs=remove_poor_attrs,
             merit_preprune=merit_preprune,
         )
+        self.label_space: typing.DefaultDict[str, typing.Set[base.typing.ClfTarget]] = defaultdict(lambda: set())
         self.bootstrap_sampling = bootstrap_sampling
         self.poisson_rate = poisson_rate
         self.drift_window_threshold = drift_window_threshold
@@ -139,6 +141,15 @@ class MultiLabelHoeffdingAdaptiveTree(HoeffdingTreeClassifier, base.MultiLabelCl
                 else:
                     proba[label] = {val: 0.0 for val in vals}
         return dict(proba)
+    
+    def predict_one(self, x: dict):
+        y_pred = self.predict_proba_one(x)
+        return {label: max(y_pred[label], key=y_pred[label].get) for label in y_pred}
+
+    def draw(self, max_depth: int = None):
+        print(self.label_space.keys())
+        self.classes = set(self.label_space.keys())
+        return super().draw(max_depth)
     
     def _new_split_criterion(self):
         return MultiLabelSplitCriterion()

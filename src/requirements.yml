@@ -14,3 +14,4 @@ dependencies:
   - pip
   - pip:
     - river>=0.15
+    - graphviz
