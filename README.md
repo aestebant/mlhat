@@ -9,7 +9,7 @@ Associated repository with complementary material to the manuscript *Hoeffding a
 
 ## Source code
 
-The purpose of this repository is to make public and accessible the source code of MLHAT, a proposal for multi-instance classification in data streams based on incremental decision trees, specifically using the principle of Hoeffding adaptive trees. The code is available under the [src](https://github.com/aestebant/mlhat/blob/main/src) folder with the following structure:
+The purpose of this repository is to make public and accessible the source code of MLHAT, a proposal for multi-instance classification in data streams based on incremental decision trees, specifically using the principle of Hoeffding adaptive trees. The code is available under the [src](src/) folder with the following structure:
 ```
 src
 │   ml_hoeffding_tree.py > Source code of the main algorithm of MLHAT.
@@ -26,13 +26,13 @@ src
 └───split_criterion > Implementation of the multi-label split criterion used in MLHAT, based on combining Bernoully process with information gain.
 ```
 
-The development environment is based on Python >=3.10, with a special mention to the library [`River`](https://riverml.xyz/0.16.0/) as the base for development of MLHAT. The complete list of libraries to replicate the environment is available in [requeriments.yml](https://github.com/aestebant/mlhat/blob/main/src/requeriments.yml).
+The development environment is based on Python >=3.10, with a special mention to the library [`River`](https://riverml.xyz/0.16.0/) as the base for development of MLHAT. The complete list of libraries to replicate the environment is available in [requeriments.yml](src/requeriments.yml).
 
-The Jupyter notebook [tutorial.ipnb](https://github.com/aestebant/mlhat/blob/main/src/tutorial.ipynb) describes a complete tutorial for using the presented library, including loading data, building the tree in a streaming environment, evaluating and visualizing results.
+The Jupyter notebook [tutorial.ipnb](src/tutorial.ipynb) describes a complete tutorial for using the presented library, including loading data, building the tree in a streaming environment, evaluating and visualizing results.
 
 ## Datasets
 
-The performance of MLHAT has been validated on a large selection of multi-label datasets that have been adapted to work in a streaming environment. The datasets belong to different sources and contexts, but all are publicly available in the [Multi-Label Classification Dataset Repository](https://www.uco.es/kdis/mllresources/). Moreover, all of then are available ready to use in this framework under the folder [src/ml_datasets](https://github.com/aestebant/mlhat/blob/main/src/ml_datasets). The datasets employed are the following, and more information about how to load them is presented in the [tutorial.ipnb](https://github.com/aestebant/mlhat/blob/main/src/tutorial.ipynb).
+The performance of MLHAT has been validated on a large selection of multi-label datasets that have been adapted to work in a streaming environment. The datasets belong to different sources and contexts, but all are publicly available in the [Multi-Label Classification Dataset Repository](https://www.uco.es/kdis/mllresources/). Moreover, all of then are available ready to use in this framework under the folder [src/ml_datasets](src/ml_datasets). The datasets employed are the following, and more information about how to load them is presented in the [tutorial.ipnb](src/tutorial.ipynb).
 
 | **Dataset**      | **Instances** | **Features** | **Labels** | **Cardinality** | **Density** |
 |------------------|---------------:|--------------:|------------:|-----------------:|-------------:|
@@ -72,7 +72,7 @@ The performance of MLHAT has been validated on a large selection of multi-label 
 
 ## Results
 
-The results associated to the complete experimentation carried out in this work are available in the [results](https://github.com/aestebant/mlhat/blob/main/results) folder. The following shows the average result of all the datasets and algorithms included in the experimentation with respect to 12 multi-label classification evaluation metrics following the prequential evaluation, with our MLHAT obtaining the best result in 11 of them. 
+The results associated to the complete experimentation carried out in this work are available in the [results](results/) folder. The following shows the average result of all the datasets and algorithms included in the experimentation with respect to 12 multi-label classification evaluation metrics following the prequential evaluation, with our MLHAT obtaining the best result in 11 of them. 
 
 | **Algorithm** | **Su. Acc** | **H. Loss** | **Ex. Acc** | **Ex. Pre** | **Ex. Rec** | **Ex. F1** | **Mi. Pre** | **Mi. Rec** | **Mi. F1** | **Ma. Pre** | **Ma. Rec** | **Ma. F1** |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|

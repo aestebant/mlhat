@@ -2,7 +2,7 @@
 
 This folder organizes all the materials generated during the experimentation presented in the article following the prequential framework.
 
-The [per_datatet](https://github.com/aestebant/mlhat/blob/main/results/per_dataset)  subfolder breaks down the result obtained by each algorithm in each dataset. Thus, there is a CSV file for each of the evaluated metrics with the following names:
+The [per_datatet](per_dataset/)  subfolder breaks down the result obtained by each algorithm in each dataset. Thus, there is a CSV file for each of the evaluated metrics with the following names:
 * `subset_acc.csv`: Subset accuracy as  $\frac{1}{n}\sum^n_{i=0} 1 | Y_i = Z_i$
 * `hamming.csv`: Hamming loss as $\frac{1}{n L} \sum^n_{i=0} \sum^L_{l=0} 1 | y_{il} \neq z_{il}$
 * `example_acc.csv`: Example-based accuracy as $\frac{1}{n} \sum^n_{i=0} \frac{|Y_i \cap Z_i|}{|Y_i \cup Z_i|}$
@@ -114,13 +114,13 @@ For each studied metric, the ranks, Friedman's $\chi^{2}$, and the *p*-value are
 | *Friedman's $\chi^{2}$* | 156.14 | 226.44 | 227.5 | 138.91 | 96.754 | 140.51 | 248.11 | 97.893 | 156.34 | 220.96 | 97.11 | 130.14 |
 | *Friedman's p-value* | 2.2e-16 | 2.2e-16 | 2.2e-16 | 2.2e-16 | 5.362e-14 | 2.2e-16 | 2.2e-16 | 3.264e-14 | 2.2e-16 | 2.2e-16 | 4.596e-14 | 2.2e-16 |
 
-And the critical distance plots are available under the [critical_distances](https://github.com/aestebant/mlhat/blob/main/results/evolution) folder. For example, the subset accuracy post-hoc test shows that there are six statistically different groups at 99% of confidence, with MLHAT in the first one:
+And the critical distance plots are available under the [critical_distances](critical_distances/) subfolder. For example, the subset accuracy post-hoc test shows that there are six statistically different groups at 99% of confidence, with MLHAT in the first one:
 
 ![cd for subset acc](critical_distances/t_subset_acc.jpg)
 
 
 ## Concept-drift adaptation
 
-Finally, the evolution of the main multi-label classification metrics during the prequential evaluation of MLHAT against the main state-of-the-art methods included in the experimentation is shown. For example the figure below shows the evolution on Yelp. For the rest of the datasets included in this work, see the [evolution](https://github.com/aestebant/mlhat/blob/main/results/evolution) folder.
+Finally, the evolution of the main multi-label classification metrics during the prequential evaluation of MLHAT against the main state-of-the-art methods included in the experimentation is shown. For example the figure below shows the evolution on Yelp. For the rest of the datasets included in this work, see the [evolution](evolution/) subfolder.
 
 ![prequential evol in yelp](evolution/p_Yelp.jpg)
