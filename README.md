@@ -35,7 +35,7 @@ The Jupyter notebook [tutorial.ipnb](src/tutorial.ipynb) describes a complete tu
 The performance of MLHAT has been validated on a large selection of multi-label datasets that have been adapted to work in a streaming environment. The datasets belong to different sources and contexts, but all are publicly available in the [Multi-Label Classification Dataset Repository](https://www.uco.es/kdis/mllresources/). Moreover, all of then are available ready to use in this framework under the folder [src/ml_datasets](src/ml_datasets). The datasets employed are the following, and more information about how to load them is presented in the [tutorial.ipnb](src/tutorial.ipynb).
 
 | **Dataset**      | **Instances** | **Features** | **Labels** | **Cardinality** | **Density** |
-|------------------|---------------:|--------------:|------------:|-----------------:|-------------:|
+|------------------|--------------:|-------------:|-----------:|----------------:|------------:|
 | **Flags**        | 194           | 19           | 7          | 3.39            | 0.48        |
 | **Chd**          | 555           | 49           | 6          | 2.58            | 0.43        |
 | **WaterQuality** | 1060          | 16           | 14         | 5.07            | 0.36        |
@@ -94,8 +94,25 @@ The results associated to the complete experimentation carried out in this work 
 | MLHAT | **0.3158** | **0.0847** | **0.9104** | **0.5343** | **0.4820** | **0.4863** | 0.6939 | **0.4701** | **0.5211** | **0.4949** | **0.3546** | **0.3786** |
 
 
-
-
 ## Reproductible experimentation
 
-All the experimentation has been executed in Python, using for the comparative analysis the implementations available in River of the main classification algorithms in multi-label data streams, with the default parameters proposed by the authors. #TODO
+All the experimentation has been run in Python, using for the comparative analysis the implementations available in River of the main classification algorithms in multi-label data streams, with the default parameters proposed by the authors. The methods used, their parameters and the reference implementation used are detailed below.
+
+| Algorithm | Family | Parameters | Implementation reference |
+|:-|:-|:-|:-|
+| MLHAT | Multilabel tree | `grace_period=200 delta=1e-05 tau=0.05 split_criterion=MLInfoGain leaf_prediction=MLNBA splitter=MLGaussian nb_threshold=0 drift_detector=ADWIN drift_window_threshold=50 switch_significance=0.05 poisson_rate=1.0 ` | This repository |
+| MLHT | Multilabel tree | `grace_period=200 delta=1e-05 tau=0.05 split_criterion=MLInfoGain leaf_prediction=MLNBA splitter=MLGaussian nb_threshold=0 leaf_classifier=MajorityLabelset` | https://github.com/Waikato/moa/blob/master/moa/src/main/java/moa/classifiers/multilabel/MultilabelHoeffdingTree.java|
+|MLHTPS | Multilabel tree | `grace_period=200 delta=1e-05 tau=0.05 split_criterion=MLInfoGain leaf_prediction=MLNBA splitter=MLGaussian nb_threshold=0 leaf_classifier=PrunedSet(HoeffdingTree)` | https://github.com/Waikato/moa/blob/master/moa/src/main/java/moa/classifiers/multilabel/MultilabelHoeffdingTree.java|
+| iSOUPT | Multilabel tree | `grace_period=200 delta=1e-5 tau=0.05 leaf_prediction=LogisticRegression model_selector_decay=0.95 splitter=TEBST min_samples_split=5`| https://riverml.xyz/0.15.0/api/tree/iSOUPTreeRegressor/ |
+| BR+HT | Tree | `grace_period=200 delta=1e-05 tau=0.05 split_criterion=InfoGain leaf_prediction=NBA splitter=Gaussian nb_threshold=0` | https://riverml.xyz/0.15.0/api/tree/HoeffdingTreeClassifier/ |
+| BR+EFDT | Tree | `grace_period=200 delta=1e-05 tau=0.05 split_criterion=InfoGain leaf_prediction=NBA splitter=Gaussian nb_threshold=0 min_samples_reevaluate=20` | https://riverml.xyz/0.15.0/api/tree/ExtremelyFastDecisionTreeClassifier/ |
+| BR+HAT | Tree | `grace_period=200 delta=1e-05 tau=0.05 split_criterion=InfoGain leaf_prediction=NBA splitter=Gaussian nb_threshold=0 drift_detector=ADWIN drift_window_threshold=50 switch_significance=0.05`| https://riverml.xyz/0.15.0/api/tree/HoeffdingAdaptiveTreeClassifier/ |
+| BR+MT | Tree | `step=0.1 loss=log use_aggregator=True dirichlet=0.5 split_pure=False` | https://riverml.xyz/0.15.0/api/forest/AMFClassifier/ |
+| BR+SGT | Tree | `grace_period=200 delta=1e-5 init_pred=0.0 lambda_value=0.1 gamma=1.0` | https://riverml.xyz/0.15.0/api/tree/SGTClassifier/ |
+| BR+ARF | Forest | `n_models=10 max_features=sqrt grace_period=50 delta=0.01 tau=0.05 split_criterion=InfoGain leaf_prediction=NBA splitter=Gaussian nb_threshold=0 lambda_value=6 drift_detector=ADWIN warning_detector=ADWIN ` | https://riverml.xyz/0.15.0/api/forest/ARFClassifier/ |
+| BR+AMF | Forest | `n_models=10 step=1.0 use_aggregation=True dirchlet=0.5 split_pure=False` | https://riverml.xyz/0.15.0/api/forest/AMFClassifier/ |
+| BR+kNN | Distance-based | `n_neighbors=5 window_size=200 min_distance_keep=0.0 weighted=True cleanup_every=0 distance_func=Euclidean softmax=False` | https://riverml.xyz/0.15.0/api/neighbors/KNNClassifier/ |
+| BR+NB | Bayesian | - | https://riverml.xyz/0.15.0/api/naive-bayes/GaussianNB/ |
+| BR+AMR | Rules | `n_min=200 delta=1e-5 tau=0.05 pred_model=LogisticRegression splitter=TEBST drift_detector=ADWIN fading_factor=0.99 anomaly_threshold=-0.75 m_min=30 min_samples_split=5` | https://riverml.xyz/0.15.0/api/rules/AMRules/ |
+| BR+OBA | Ensemble | `model=LogisticRegression n_models=10 drift_detector=ADWIN` |  https://riverml.xyz/0.15.0/api/ensemble/ADWINBaggingClassifier/ |
+| BR+OBOA | Ensemble | `model=LogisticRegression n_models=10 drift_detector=ADWIN` | https://riverml.xyz/0.15.0/api/ensemble/ADWINBoostingClassifier/ |
