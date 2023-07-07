@@ -13,7 +13,7 @@ The purpose of this repository is to make public and accessible the source code 
 ```
 src
 │   ml_hoeffding_tree.py > Source code of the main algorithm of MLHAT.
-│   requeriments.yml
+│   requirements.yml
 │   tutorial.ipynb
 │
 └───leaf_classifiers > Implementations of the multi-label classifiers used in the leaves of the tree.
