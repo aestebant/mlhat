@@ -1,6 +1,6 @@
 # MLHAT: Multi-Label Hoeffding Adaptive Trees for classification in multi-label data streams
 
-Associated repository with complementary material to the manuscript *Hoeffding adaptive trees for multi-label classification on data streams* [submitted to *IEEE Transactions on Knowledge and Data Engineering*]:
+Associated repository with complementary material to the manuscript *Hoeffding adaptive trees for multi-label classification on data streams* [submitted to the *Artificial Intelligence Journal*]:
 
 * Source code of the MLHAT proposal
 * Datasets used in the experimentation
@@ -32,12 +32,11 @@ The Jupyter notebook [tutorial.ipnb](src/tutorial.ipynb) describes a complete tu
 
 ## Datasets
 
-The performance of MLHAT has been validated on a large selection of multi-label datasets that have been adapted to work in a streaming environment. The datasets belong to different sources and contexts, but all are publicly available in the [Multi-Label Classification Dataset Repository](https://www.uco.es/kdis/mllresources/). Moreover, all of then are available ready to use in this framework under the folder [src/ml_datasets](src/ml_datasets). The datasets employed are the following, and more information about how to load them is presented in the [tutorial.ipnb](src/tutorial.ipynb).
+The performance of MLHAT has been validated on a large selection of multi-label datasets that have been adapted to work in a streaming environment. The datasets belong to different sources and contexts, but all are publicly available in the [Multi-Label Classification Dataset Repository](https://www.uco.es/kdis/mllresources/).
 
 | **Dataset**      | **Instances** | **Features** | **Labels** | **Cardinality** | **Density** |
 |------------------|--------------:|-------------:|-----------:|----------------:|------------:|
 | **Flags**        | 194           | 19           | 7          | 3.39            | 0.48        |
-| **Chd**          | 555           | 49           | 6          | 2.58            | 0.43        |
 | **WaterQuality** | 1060          | 16           | 14         | 5.07            | 0.36        |
 | **Emotions**     | 593           | 72           | 6          | 1.87            | 0.31        |
 | **VirusGO**      | 207           | 749          | 6          | 1.22            | 0.20        |
@@ -46,52 +45,69 @@ The performance of MLHAT has been validated on a large selection of multi-label 
 | **Scene**        | 2407          | 294          | 6          | 1.07            | 0.18        |
 | **Gnegative**    | 1392          | 440          | 8          | 1.05            | 0.13        |
 | **Plant**        | 978           | 440          | 12         | 1.08            | 0.09        |
-| **Cal500**       | 502           | 68           | 174        | 26.04           | 0.15        |
 | **Human**        | 3106          | 440          | 14         | 1.19            | 0.08        |
-| **Genbase**      | 662           | 1186         | 27         | 1.25            | 0.05        |
 | **Yelp**         | 10806         | 671          | 5          | 1.64            | 0.33        |
 | **Medical**      | 978           | 1449         | 45         | 1.25            | 0.03        |
 | **Eukaryote**    | 7766          | 440          | 22         | 1.15            | 0.05        |
 | **Slashdot**     | 3782          | 1079         | 22         | 1.18            | 0.05        |
 | **Enron**        | 1702          | 1001         | 53         | 4.27            | 0.08        |
 | **Hypercube**    | 100000        | 100          | 10         | 1.00            | 0.10        |
-| **Hypersphere**  | 100000        | 100          | 10         | 2.31            | 0.23        |
 | **Langlog**      | 1460          | 1004         | 75         | 15.94           | 0.21        |
 | **Stackex**      | 1675          | 585          | 227        | 2.41            | 0.01        |
 | **Tmc**          | 28596         | 500          | 22         | 2.22            | 0.10        |
 | **Ohsumed**      | 13929         | 1002         | 23         | 0.81            | 0.04        |
 | **D20ng**        | 19300         | 1006         | 20         | 1.42            | 0.07        |
 | **Mediamill**    | 43907         | 120          | 101        | 4.38            | 0.04        |
-| **Corel5k**      | 5000          | 499          | 374        | 3.52            | 0.01        |
 | **Corel16k**     | 13766         | 500          | 153        | 2.86            | 0.02        |
 | **Bibtex**       | 7395          | 1836         | 159        | 2.40            | 0.02        |
 | **Nuswidec**     | 269648        | 129          | 81         | 1.87            | 0.02        |
+| **Nuswideb**     | 269648        | 501          | 81         | 1.87            | 0.02        |
+| **Imdb**         | 120919        | 1001         | 28         | 1.00            | 0.04        |
 | **YahooSociety** | 14512         | 31802        | 27         | 1.67            | 0.06        |
 | **Eurlex**       | 19348         | 5000         | 201        | 2.21            | 0.01        |
+
+Moreover, a set of synthetic datasets have been generated to test the performance of MLHAT under specific concept drifts and other different conditions. The datasets have been generated using the multi-label meta-generator provided by the [MOA framewok](https://moa.cms.waikato.ac.nz) and made publicly available in our repository under the folder [synthdata](synthdata)
+
+| **Dataset**     | **Instances** | **Features**    | **Labels** | **Generator** | **Drift type** | **Drift width** |
+|----------------|--------------:|:----------------:|-----------:|:--------------:|:---------------:|----------------:|
+| **SynTreeSud**  | 50000        | 20 num.+10 cat. | 8          | Random Tree   | sudden         | 1               |
+| **SynRBFSud**   | 50000        | 80 numeric      | 25         | Random RBF    | sudden         | 1               |
+| **SynHPSud**    | 50000        | 30 numeric      | 8          | Hyper Plane   | sudden         | 1               |
+| **SynTreeGrad** | 50000        | 20 num.+10 cat. | 8          | Random Tree   | gradual        | 500             |
+| **SynRBFGrad**  | 50000        | 80 numeric      | 25         | Random RBF    | gradual        | 500             |
+| **SynHPGrad**   | 50000        | 30 numeric      | 8          | Hyper Plane   | gradual        | 500             |
+| **SynTreeInc**  | 50000        | 20 num.+10 cat. | 8          | Random Tree   | incremental    | 275             |
+| **SynRBFInc**   | 50000        | 80 numeric      | 25         | Random RBF    | incremental    | 275             |
+| **SynHPInc**    | 50000        | 30 numeric      | 8          | Hyper Plane   | incremental    | 275             |
+| **SynTreeRec**  | 50000        | 20 num.+10 cat. | 8          | Random Tree   | recurrent      | 1               |
+| **SynRBFRec**   | 50000        | 80 numeric      | 25         | Random RBF    | recurrent      | 1               |
+| **SynHPRec**    | 50000        | 30 numeric      | 8          | Hyper Plane   | recurrent      | 1               |
+
+Moreover, all of then are available ready to use in this framework under the folder [src/ml_datasets](src/ml_datasets). The datasets employed are the following, and more information about how to load them is presented in the [tutorial.ipnb](src/tutorial.ipynb).
 
 
 ## Results
 
-The results associated to the complete experimentation carried out in this work are available in the [results](results/) folder. The following shows the average result of all the datasets and algorithms included in the experimentation with respect to 12 multi-label classification evaluation metrics following the prequential evaluation, with our MLHAT obtaining the best result in 11 of them. 
+The results associated to the complete experimentation carried out in this work are available in the [results](results/) folder. The following shows the average result of all the datasets and algorithms included in the experimentation with respect to 12 multi-label classification evaluation metrics following the prequential evaluation, with our MLHAT obtaining the best result in 11 of them.
 
-| **Algorithm** | **Su. Acc** | **H. Loss** | **Ex. Acc** | **Ex. Pre** | **Ex. Rec** | **Ex. F1** | **Mi. Pre** | **Mi. Rec** | **Mi. F1** | **Ma. Pre** | **Ma. Rec** | **Ma. F1** |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| kNN | 0.2549 | 0.0962 | 0.8989 | 0.4353 | 0.3937 | 0.3977 | 0.5327 | 0.3857 | 0.4275 | 0.3910 | 0.2714 | 0.2870 |
-| NB | 0.1279 | 0.1449 | 0.8502 | 0.2893 | 0.3562 | 0.2858 | 0.3736 | 0.3582 | 0.2983 | 0.2048 | 0.2728 | 0.2036 |
-| AMR | 0.2733 | 0.0927 | 0.9024 | 0.4747 | 0.4301 | 0.4315 | 0.6819 | 0.4176 | 0.4558 | 0.4084 | 0.3073 | 0.3234 |
-| HT | 0.1895 | 0.0983 | 0.8967 | 0.3941 | 0.3422 | 0.3459 | 0.5460 | 0.3349 | 0.3885 | 0.3047 | 0.2295 | 0.2389 |
-| HAT | 0.2224 | 0.0934 | 0.9016 | 0.4331 | 0.3816 | 0.3848 | 0.5584 | 0.3716 | 0.4243 | 0.3300 | 0.2555 | 0.2663 |
-| EFDT | 0.2120 | 0.0945 | 0.9006 | 0.4262 | 0.3829 | 0.3820 | 0.5482 | 0.3761 | 0.4260 | 0.3294 | 0.2621 | 0.2741 |
-| SGT | 0.0466 | 0.2792 | 0.7150 | 0.2006 | 0.3162 | 0.1859 | 0.2116 | 0.3170 | 0.2040 | 0.1549 | 0.2967 | 0.1494 |
-| MT | 0.1584 | 0.1028 | 0.8923 | 0.3418 | 0.2612 | 0.2772 | 0.5928 | 0.2553 | 0.3143 | 0.2934 | 0.1823 | 0.1927 |
-| OBA | 0.2896 | 0.0894 | 0.9057 | 0.4861 | 0.4326 | 0.4390 | **0.7152** | 0.4188 | 0.4653 | 0.4214 | 0.3068 | 0.3290 |
-| OBOA | 0.2856 | 0.0904 | 0.9046 | 0.4827 | 0.4319 | 0.4369 | 0.7034 | 0.4183 | 0.4612 | 0.4193 | 0.3085 | 0.3290 |
-| ARF | 0.2496 | **0.0847** | 0.9104 | 0.4595 | 0.3847 | 0.4001 | 0.7097 | 0.3743 | 0.4408 | 0.4173 | 0.2597 | 0.2801 |
-| AMF | 0.2373 | 0.0874 | 0.9074 | 0.4515 | 0.3709 | 0.3868 | 0.6731 | 0.3613 | 0.4282 | 0.4022 | 0.2619 | 0.2865 |
-| MLHT | 0.1736 | 0.1359 | 0.8591 | 0.3052 | 0.2712 | 0.2743 | 0.3196 | 0.2589 | 0.2761 | 0.1435 | 0.1562 | 0.1295 |
-| MLHTPS | 0.1582 | 0.1105 | 0.8845 | 0.3314 | 0.2668 | 0.2759 | 0.4715 | 0.2621 | 0.2958 | 0.2270 | 0.1859 | 0.1821 |
-| iSOUPT | 0.2710 | 0.0945 | 0.9006 | 0.4752 | 0.4253 | 0.4289 | 0.6960 | 0.4132 | 0.4578 | 0.3904 | 0.2907 | 0.3074 |
-| MLHAT | **0.3158** | **0.0847** | **0.9104** | **0.5343** | **0.4820** | **0.4863** | 0.6939 | **0.4701** | **0.5211** | **0.4949** | **0.3546** | **0.3786** |
+| **Algorithm** | **Su. Acc**     | **H. Loss**   | **Ex. Pre**     | **Ex. Rec**     | **Ex. F1**      | **Mi. Pre**     | **Mi. Rec**     | **Mi. F1**      | **Ma. Pre**     | **Ma. Rec**     | **Ma. F1**      | **Time (s)**   |
+|--------------:|----------------:|--------------:|----------------:|----------------:|----------------:|----------------:|----------------:|----------------:|----------------:|----------------:|----------------:|---------------:|
+| **KNN**       | 0.2060          | 0.1299        | 0.4754          | 0.3315          | 0.3408          | 0.5203          | 0.3296          | 0.3827          | 0.4069          | 0.2379          | 0.2686          | 102274        |
+| **NB**        | 0.1024          | 0.1850        | 0.3879          | 0.3194          | 0.2398          | 0.3470          | 0.3244          | 0.2543          | 0.2268          | 0.2611          | 0.1811          | 7567          |
+| **AMR**       | 0.2130          | 0.1207        | 0.5686          | 0.3310          | 0.3396          | 0.6490          | 0.3252          | 0.3784          | 0.4456          | 0.2394          | 0.2673          | 29808         |
+| **HT**        | 0.1550          | 0.1257        | 0.5116          | 0.2678          | 0.2761          | 0.5367          | 0.2639          | 0.3247          | 0.3453          | 0.1829          | 0.2066          | 42935         |
+| **HAT**       | 0.1781          | 0.1219        | 0.5343          | 0.3071          | 0.3144          | 0.5522          | 0.3031          | 0.3675          | 0.3687          | 0.2106          | 0.2373          | 43600         |
+| **EFDT**      | 0.1652          | 0.1264        | 0.4992          | 0.3092          | 0.3135          | 0.5138          | 0.3074          | 0.3668          | 0.3512          | 0.2190          | 0.2472          | 36901         |
+| **SGT***      | 0.0356          | 0.2604        | 0.4323          | 0.2149          | 0.1275          | 0.2200          | 0.2163          | 0.1452          | 0.1682          | 0.2023          | 0.1052          | 294527        |
+| **MT***       | 0.1244          | 0.1319        | 0.5104          | 0.1831          | 0.1967          | 0.5581          | 0.1786          | 0.2281          | 0.2994          | 0.1264          | 0.1384          | 185499        |
+| **ARF**       | 0.2025          | **0.1142** | 0.5486          | 0.3092          | 0.3268          | 0.6862          | 0.3053          | 0.3813          | 0.4691          | 0.2152          | 0.2516          | 29001         |
+| **AMF***      | 0.2029          | 0.1259        | 0.6441          | 0.2967          | 0.3131          | 0.6668          | 0.2918          | 0.3520          | 0.4589          | 0.2142          | 0.2405          | 122084        |
+| **ABA**       | 0.2210          | 0.1188        | 0.5920          | 0.3228          | 0.3342          | **0.7002** | 0.3162          | 0.3712          | 0.4775          | 0.2296          | 0.2570          | 12570         |
+| **ABO**       | 0.2180          | 0.1197        | 0.5894          | 0.3228          | 0.3330          | 0.6905          | 0.3161          | 0.3686          | 0.4651          | 0.2309          | 0.2569          | 13851         |
+| **MLHT**      | 0.1431          | 0.1755        | 0.2835          | 0.2430          | 0.2518          | 0.3041          | 0.2351          | 0.2549          | 0.2516          | 0.1531          | 0.1160          | **1455** |
+| **MLHTPS**    | 0.1242          | 0.1374        | 0.4613          | 0.1907          | 0.1957          | 0.4267          | 0.1868          | 0.2159          | 0.3138          | 0.1365          | 0.1387          | 29508         |
+| **iSOUPT**    | 0.2184          | 0.1203        | 0.5908          | 0.3260          | 0.3351          | 0.6888          | 0.3203          | 0.3779          | 0.4585          | 0.2291          | 0.2562          | 6472          |
+| **MLHAT**     | **0.2670** | 0.1295        | **0.6499** | **0.4900** | **0.4802** | 0.5490          | **0.4551** | **0.4929** | **0.4828** | **0.3630** | **0.3886** | 16119         |
 
 
 ## Reproductible experimentation
