@@ -10,7 +10,8 @@ Associated repository with complementary material to the manuscript *Hoeffding a
 ## Source code
 
 The purpose of this repository is to make public and accessible the source code of MLHAT, a proposal for multi-instance classification in data streams based on incremental decision trees, specifically using the principle of Hoeffding adaptive trees. The code is available under the [src](src/) folder with the following structure:
-```
+
+```text
 src
 │   ml_hoeffding_tree.py > Source code of the main algorithm of MLHAT.
 │   requirements.yml
@@ -85,30 +86,29 @@ Moreover, a set of synthetic datasets have been generated to test the performanc
 
 Moreover, all of then are available ready to use in this framework under the folder [src/ml_datasets](src/ml_datasets). The datasets employed are the following, and more information about how to load them is presented in the [tutorial.ipnb](src/tutorial.ipynb).
 
-
 ## Results
 
 The results associated to the complete experimentation carried out in this work are available in the [results](results/) folder. The following shows the average result of all the datasets and algorithms included in the experimentation with respect to 12 multi-label classification evaluation metrics following the prequential evaluation, with our MLHAT obtaining the best result in 11 of them.
 
-| **Algorithm** | **Su. Acc**     | **H. Loss**   | **Ex. Pre**     | **Ex. Rec**     | **Ex. F1**      | **Mi. Pre**     | **Mi. Rec**     | **Mi. F1**      | **Ma. Pre**     | **Ma. Rec**     | **Ma. F1**      | **Time (s)**   |
-|--------------:|----------------:|--------------:|----------------:|----------------:|----------------:|----------------:|----------------:|----------------:|----------------:|----------------:|----------------:|---------------:|
-| **KNN**       | 0.2060          | 0.1299        | 0.4754          | 0.3315          | 0.3408          | 0.5203          | 0.3296          | 0.3827          | 0.4069          | 0.2379          | 0.2686          | 102274        |
-| **NB**        | 0.1024          | 0.1850        | 0.3879          | 0.3194          | 0.2398          | 0.3470          | 0.3244          | 0.2543          | 0.2268          | 0.2611          | 0.1811          | 7567          |
-| **AMR**       | 0.2130          | 0.1207        | 0.5686          | 0.3310          | 0.3396          | 0.6490          | 0.3252          | 0.3784          | 0.4456          | 0.2394          | 0.2673          | 29808         |
-| **HT**        | 0.1550          | 0.1257        | 0.5116          | 0.2678          | 0.2761          | 0.5367          | 0.2639          | 0.3247          | 0.3453          | 0.1829          | 0.2066          | 42935         |
-| **HAT**       | 0.1781          | 0.1219        | 0.5343          | 0.3071          | 0.3144          | 0.5522          | 0.3031          | 0.3675          | 0.3687          | 0.2106          | 0.2373          | 43600         |
-| **EFDT**      | 0.1652          | 0.1264        | 0.4992          | 0.3092          | 0.3135          | 0.5138          | 0.3074          | 0.3668          | 0.3512          | 0.2190          | 0.2472          | 36901         |
-| **SGT***      | 0.0356          | 0.2604        | 0.4323          | 0.2149          | 0.1275          | 0.2200          | 0.2163          | 0.1452          | 0.1682          | 0.2023          | 0.1052          | 294527        |
-| **MT***       | 0.1244          | 0.1319        | 0.5104          | 0.1831          | 0.1967          | 0.5581          | 0.1786          | 0.2281          | 0.2994          | 0.1264          | 0.1384          | 185499        |
-| **ARF**       | 0.2025          | **0.1142** | 0.5486          | 0.3092          | 0.3268          | 0.6862          | 0.3053          | 0.3813          | 0.4691          | 0.2152          | 0.2516          | 29001         |
-| **AMF***      | 0.2029          | 0.1259        | 0.6441          | 0.2967          | 0.3131          | 0.6668          | 0.2918          | 0.3520          | 0.4589          | 0.2142          | 0.2405          | 122084        |
-| **ABA**       | 0.2210          | 0.1188        | 0.5920          | 0.3228          | 0.3342          | **0.7002** | 0.3162          | 0.3712          | 0.4775          | 0.2296          | 0.2570          | 12570         |
-| **ABO**       | 0.2180          | 0.1197        | 0.5894          | 0.3228          | 0.3330          | 0.6905          | 0.3161          | 0.3686          | 0.4651          | 0.2309          | 0.2569          | 13851         |
-| **MLHT**      | 0.1431          | 0.1755        | 0.2835          | 0.2430          | 0.2518          | 0.3041          | 0.2351          | 0.2549          | 0.2516          | 0.1531          | 0.1160          | **1455** |
-| **MLHTPS**    | 0.1242          | 0.1374        | 0.4613          | 0.1907          | 0.1957          | 0.4267          | 0.1868          | 0.2159          | 0.3138          | 0.1365          | 0.1387          | 29508         |
-| **iSOUPT**    | 0.2184          | 0.1203        | 0.5908          | 0.3260          | 0.3351          | 0.6888          | 0.3203          | 0.3779          | 0.4585          | 0.2291          | 0.2562          | 6472          |
-| **MLHAT**     | **0.2670** | 0.1295        | **0.6499** | **0.4900** | **0.4802** | 0.5490          | **0.4551** | **0.4929** | **0.4828** | **0.3630** | **0.3886** | 16119         |
-
+| Algorithm | Subset Acc.   | Hamming loss        | Example-based F1     | Example-based Precision   | Example-based Recall    | Micro F1       | Micro Precision     | Micro Recall      | Macro F1       | Macro Precision     | Macro Recall      | Time (s)       |
+|----------|---------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|---------------|
+| **MLHAT**    | **0.2646** | 0.1301          | **0.4755** | 0.6195          | 0.4892          | **0.4855** | 0.5309          | 0.4556          | **0.3871** | 0.4691          | **0.3661** | 14994         |
+| **KNN**      | 0.2018        | 0.1273          | 0.3321          | 0.4781          | 0.3234          | 0.3744          | 0.5170          | 0.3220          | 0.2609          | 0.4035          | 0.2309          | 102362        |
+| **NB**       | 0.0993        | 0.1842          | 0.2338          | 0.3794          | 0.3157          | 0.2479          | 0.3392          | 0.3211          | 0.1754          | 0.2198          | 0.2582          | 7578          |
+| **AMR**      | 0.2111        | 0.1177          | 0.3343          | 0.5716          | 0.3263          | 0.3728          | 0.6513          | 0.3207          | 0.2626          | 0.4467          | 0.2356          | 29882         |
+| **HT**       | 0.1512        | 0.1232          | 0.2687          | 0.5127          | 0.2608          | 0.3176          | 0.5336          | 0.2574          | 0.2003          | 0.3424          | 0.1770          | 42975         |
+| **HAT**      | 0.1746        | 0.1195          | 0.3076          | 0.5352          | 0.3008          | 0.3612          | 0.5494          | 0.2972          | 0.2319          | 0.3659          | 0.2056          | 43651         |
+| **EFDT**     | 0.1620        | 0.1236          | 0.3066          | 0.4996          | 0.3028          | 0.3603          | 0.5095          | 0.3015          | 0.2413          | 0.3465          | 0.2138          | 36942         |
+| **SGT***     | 0.0337        | 0.2562          | 0.1221          | 0.4381          | 0.2103          | 0.1392          | 0.2115          | 0.2122          | 0.1016          | 0.1638          | 0.1991          | 298466        |
+| **MT***      | 0.1224        | 0.1285          | 0.1920          | 0.5126          | 0.1789          | 0.2223          | 0.5606          | 0.1750          | 0.1335          | 0.2922          | 0.1232          | 186185        |
+| **ARF**      | 0.1967        | **0.1126** | 0.3178          | 0.5507          | 0.3008          | 0.3730          | 0.6886          | 0.2972          | 0.2440          | 0.4710          | 0.2081          | 29308         |
+| **AMF***     | 0.1935        | 0.1247          | 0.2987          | **0.6457** | 0.2834          | 0.3367          | 0.6681          | 0.2790          | 0.2267          | 0.4547          | 0.2029          | 131491        |
+| **ABALR**    | 0.2189        | 0.1156          | 0.3283          | 0.5958          | 0.3178          | 0.3638          | **0.7057** | 0.3113          | 0.2509          | **0.4808** | 0.2254          | 12584         |
+| **ABOLR**    | 0.2162        | 0.1164          | 0.3276          | 0.5931          | 0.3182          | 0.3616          | 0.6959          | 0.3115          | 0.2512          | 0.4682          | 0.2270          | 13868         |
+| **MLBELS***  | 0.2046        | 0.1858          | 0.4595          | 0.4854          | **0.5452** | 0.4703          | 0.4579          | **0.5173** | 0.3090          | 0.4518          | 0.3650          | 77813         |
+| **MLHT**     | 0.1419        | 0.1723          | 0.2495          | 0.2792          | 0.2419          | 0.2523          | 0.2992          | 0.2343          | 0.1139          | 0.2497          | 0.1522          | **1458** |
+| **MLHTPS**   | 0.1211        | 0.1343          | 0.1900          | 0.4596          | 0.1856          | 0.2096          | 0.4164          | 0.1823          | 0.1337          | 0.3058          | 0.1327          | 29517         |
+| **iSOUPT**   | 0.2154        | 0.1175          | 0.3284          | 0.5938          | 0.3202          | 0.3710          | 0.6908          | 0.3149          | 0.2507          | 0.4608          | 0.2247          | 6486          |
 
 ## Reproductible experimentation
 
@@ -116,19 +116,20 @@ All the experimentation has been run in Python, using for the comparative analys
 
 | Algorithm | Family | Parameters | Implementation reference |
 |:-|:-|:-|:-|
-| MLHAT | Multilabel tree | `grace_period=200 delta=1e-05 tau=0.05 split_criterion=MLInfoGain leaf_prediction=MLNBA splitter=MLGaussian nb_threshold=0 drift_detector=ADWIN drift_window_threshold=50 switch_significance=0.05 poisson_rate=1.0 ` | This repository |
-| MLHT | Multilabel tree | `grace_period=200 delta=1e-05 tau=0.05 split_criterion=MLInfoGain leaf_prediction=MLNBA splitter=MLGaussian nb_threshold=0 leaf_classifier=MajorityLabelset` | https://github.com/Waikato/moa/blob/master/moa/src/main/java/moa/classifiers/multilabel/MultilabelHoeffdingTree.java|
-|MLHTPS | Multilabel tree | `grace_period=200 delta=1e-05 tau=0.05 split_criterion=MLInfoGain leaf_prediction=MLNBA splitter=MLGaussian nb_threshold=0 leaf_classifier=PrunedSet(HoeffdingTree)` | https://github.com/Waikato/moa/blob/master/moa/src/main/java/moa/classifiers/multilabel/MultilabelHoeffdingTree.java|
-| iSOUPT | Multilabel tree | `grace_period=200 delta=1e-5 tau=0.05 leaf_prediction=LogisticRegression model_selector_decay=0.95 splitter=TEBST min_samples_split=5`| https://riverml.xyz/0.15.0/api/tree/iSOUPTreeRegressor/ |
-| BR+HT | Tree | `grace_period=200 delta=1e-05 tau=0.05 split_criterion=InfoGain leaf_prediction=NBA splitter=Gaussian nb_threshold=0` | https://riverml.xyz/0.15.0/api/tree/HoeffdingTreeClassifier/ |
-| BR+EFDT | Tree | `grace_period=200 delta=1e-05 tau=0.05 split_criterion=InfoGain leaf_prediction=NBA splitter=Gaussian nb_threshold=0 min_samples_reevaluate=20` | https://riverml.xyz/0.15.0/api/tree/ExtremelyFastDecisionTreeClassifier/ |
-| BR+HAT | Tree | `grace_period=200 delta=1e-05 tau=0.05 split_criterion=InfoGain leaf_prediction=NBA splitter=Gaussian nb_threshold=0 drift_detector=ADWIN drift_window_threshold=50 switch_significance=0.05`| https://riverml.xyz/0.15.0/api/tree/HoeffdingAdaptiveTreeClassifier/ |
-| BR+MT | Tree | `step=0.1 loss=log use_aggregator=True dirichlet=0.5 split_pure=False` | https://riverml.xyz/0.15.0/api/forest/AMFClassifier/ |
-| BR+SGT | Tree | `grace_period=200 delta=1e-5 init_pred=0.0 lambda_value=0.1 gamma=1.0` | https://riverml.xyz/0.15.0/api/tree/SGTClassifier/ |
-| BR+ARF | Forest | `n_models=10 max_features=sqrt grace_period=50 delta=0.01 tau=0.05 split_criterion=InfoGain leaf_prediction=NBA splitter=Gaussian nb_threshold=0 lambda_value=6 drift_detector=ADWIN warning_detector=ADWIN ` | https://riverml.xyz/0.15.0/api/forest/ARFClassifier/ |
-| BR+AMF | Forest | `n_models=10 step=1.0 use_aggregation=True dirchlet=0.5 split_pure=False` | https://riverml.xyz/0.15.0/api/forest/AMFClassifier/ |
-| BR+kNN | Distance-based | `n_neighbors=5 window_size=200 min_distance_keep=0.0 weighted=True cleanup_every=0 distance_func=Euclidean softmax=False` | https://riverml.xyz/0.15.0/api/neighbors/KNNClassifier/ |
-| BR+NB | Bayesian | - | https://riverml.xyz/0.15.0/api/naive-bayes/GaussianNB/ |
-| BR+AMR | Rules | `n_min=200 delta=1e-5 tau=0.05 pred_model=LogisticRegression splitter=TEBST drift_detector=ADWIN fading_factor=0.99 anomaly_threshold=-0.75 m_min=30 min_samples_split=5` | https://riverml.xyz/0.15.0/api/rules/AMRules/ |
-| BR+OBA | Ensemble | `model=LogisticRegression n_models=10 drift_detector=ADWIN` |  https://riverml.xyz/0.15.0/api/ensemble/ADWINBaggingClassifier/ |
-| BR+OBOA | Ensemble | `model=LogisticRegression n_models=10 drift_detector=ADWIN` | https://riverml.xyz/0.15.0/api/ensemble/ADWINBoostingClassifier/ |
+| MLHAT | Multilabel tree | `grace_period=200, delta=1e-05, tau=0.05, split_criterion=MLInfoGain, leaf_prediction=MLNBA, splitter=MLGaussian, nb_threshold=0, drift_detector=ADWIN, drift_window_threshold=50, switch_significance=0.05, poisson_rate=1.0` | This repository |
+| MLHT | Multilabel tree | `grace_period=200, delta=1e-05, tau=0.05, split_criterion=MLInfoGain, leaf_prediction=MLNBA, splitter=MLGaussian, nb_threshold=0, leaf_classifier=MajorityLabelset` | <https://github.com/Waikato/moa/blob/master/moa/src/main/java/moa/classifiers/multilabel/MultilabelHoeffdingTree.java>|
+|MLHTPS | Multilabel tree | `grace_period=200, delta=1e-05, tau=0.05, split_criterion=MLInfoGain, leaf_prediction=MLNBA, splitter=MLGaussian, nb_threshold=0, leaf_classifier=PrunedSet(HoeffdingTree)` | <https://github.com/Waikato/moa/blob/master/moa/src/main/java/moa/classifiers/multilabel/MultilabelHoeffdingTree.java>|
+| iSOUPT | Multilabel tree | `grace_period=200, delta=1e-5, tau=0.05, leaf_prediction=LogisticRegression, model_selector_decay=0.95, splitter=TEBST, min_samples_split=5`| <https://riverml.xyz/0.15.0/api/tree/iSOUPTreeRegressor/> |
+| MLBELS | Multilabel neural network | `N1=3, N2=25, N3=1, max_learners=100, shrink_coef=0.8, regularization_coef=2**-30, batch_size=50, preprocess=True, tau=1.5` | <https://github.com/sepehrbakhshi/ML-BELS> |
+| BR+HT | Tree | `grace_period=200, delta=1e-05, tau=0.05, split_criterion=InfoGain, leaf_prediction=NBA, splitter=Gaussian, nb_threshold=0` | <https://riverml.xyz/0.15.0/api/tree/HoeffdingTreeClassifier/> |
+| BR+EFDT | Tree | `grace_period=200, delta=1e-05, tau=0.05, split_criterion=InfoGain, leaf_prediction=NBA, splitter=Gaussian, nb_threshold=0, min_samples_reevaluate=20` | <https://riverml.xyz/0.15.0/api/tree/ExtremelyFastDecisionTreeClassifier/> |
+| BR+HAT | Tree | `grace_period=200, delta=1e-05, tau=0.05, split_criterion=InfoGain, leaf_prediction=NBA, splitter=Gaussian, nb_threshold=0, drift_detector=ADWIN, drift_window_threshold=50, switch_significance=0.05`| <https://riverml.xyz/0.15.0/api/tree/HoeffdingAdaptiveTreeClassifier/> |
+| BR+MT | Tree | `step=0.1, loss=log, use_aggregator=True, dirichlet=0.5, split_pure=False` | <https://riverml.xyz/0.15.0/api/forest/AMFClassifier/> |
+| BR+SGT | Tree | `grace_period=200, delta=1e-5, init_pred=0.0, lambda_value=0.1, gamma=1.0` | <https://riverml.xyz/0.15.0/api/tree/SGTClassifier/> |
+| BR+ARF | Forest | `n_models=10, max_features=sqrt, grace_period=50, delta=0.01, tau=0.05, split_criterion=InfoGain, leaf_prediction=NBA, splitter=Gaussian, nb_threshold=0, lambda_value=6, drift_detector=ADWIN, warning_detector=ADWIN` | <https://riverml.xyz/0.15.0/api/forest/ARFClassifier/> |
+| BR+AMF | Forest | `n_models=10, step=1.0, use_aggregation=True, dirchlet=0.5, split_pure=False` | <https://riverml.xyz/0.15.0/api/forest/AMFClassifier/> |
+| BR+kNN | Distance-based | `n_neighbors=5, window_size=200, min_distance_keep=0.0, weighted=True, cleanup_every=0, distance_func=Euclidean, softmax=False` | <https://riverml.xyz/0.15.0/api/neighbors/KNNClassifier/> |
+| BR+NB | Bayesian | - | <https://riverml.xyz/0.15.0/api/naive-bayes/GaussianNB/> |
+| BR+AMR | Rules | `n_min=200, delta=1e-5, tau=0.05, pred_model=LogisticRegression, splitter=TEBST, drift_detector=ADWIN, fading_factor=0.99, anomaly_threshold=-0.75, m_min=30, min_samples_split=5` | <https://riverml.xyz/0.15.0/api/rules/AMRules/> |
+| BR+OBA | Ensemble | `model=LogisticRegression, n_models=10, drift_detector=ADWIN` |  <https://riverml.xyz/0.15.0/api/ensemble/ADWINBaggingClassifier/> |
+| BR+OBOA | Ensemble | `model=LogisticRegression, n_models=10, drift_detector=ADWIN` | <https://riverml.xyz/0.15.0/api/ensemble/ADWINBoostingClassifier/> |
