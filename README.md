@@ -1,6 +1,6 @@
 # MLHAT: Multi-Label Hoeffding Adaptive Trees for classification in multi-label data streams
 
-Associated repository with complementary material to the manuscript *Hoeffding adaptive trees for multi-label classification on data streams* [submitted to the *Artificial Intelligence Journal*]:
+Associated repository with complementary material to the paper *Hoeffding adaptive trees for multi-label classification on data streams*, published in [Knowledge-Based Systems](https://doi.org/10.1016/j.knosys.2024.112561) journal:
 
 * Source code of the MLHAT proposal
 * Datasets used in the experimentation
@@ -13,18 +13,18 @@ The purpose of this repository is to make public and accessible the source code 
 
 ```text
 src
-│   ml_hoeffding_tree.py > Source code of the main algorithm of MLHAT.
 │   requirements.yml
 │   tutorial.ipynb
 │
-└───leaf_classifiers > Implementations of the multi-label classifiers used in the leaves of the tree.
+└───multioutput
+│   │   mlhat.py > Source code of the main algorithm of MLHAT.
+│   │   mlht.py > Additionally to the main contribution of the work, here is an implementation of the multi-label Hoeffding tree of J. Read et al. (2012)
+│   │
+│   └───mlhat_nodes > Implementations of the branches and leaaf nodes used in the proposal.
+│   │
+│   │   binary_relevance.py, label_combination.py, majority.py > Auxiliar implementations of multi-label classifiers for the leaf classifiers of MLHAT.
 │
-└───nodes
-│   │   ml_node.py > Abstract classes for multi-label adaptive nodes (leaves and branches)
-│   │   ml_leaves.py > Implementation of the MLHAT leaf.
-│   │   ml_branches.py > Implementations of the MLHAT branches.
-│
-└───split_criterion > Implementation of the multi-label split criterion used in MLHAT, based on combining Bernoully process with information gain.
+└───evaluate, linear_model, metrics, neighbors, stream > Minor adaptations from the River library needed for our work.
 ```
 
 The development environment is based on Python >=3.10, with a special mention to the library [`River`](https://riverml.xyz/0.16.0/) as the base for development of MLHAT. The complete list of libraries to replicate the environment is available in [requirements.yml](src/requirements.yml).
