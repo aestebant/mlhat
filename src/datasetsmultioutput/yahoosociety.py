@@ -17,9 +17,9 @@ class YahooSociety(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Yahoo_Society_Meka.zip",
             unpack=True,
             filename="Yahoo_Society.arff",
-            size=18_854_486,
+            size=18_885_044,
         )
-    
+
     def _iter(self):
         return stream.iter_arff(
             self.path,

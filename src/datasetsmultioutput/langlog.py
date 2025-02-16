@@ -17,9 +17,9 @@ class Langlog(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Langlog_Meka.zip",
             unpack=True,
             filename="Langlog.arff",
-            size=1_693_749,
+            size=1_655_202,
         )
-    
+
     def _iter(self):
         return stream.iter_arff(
             self.path,

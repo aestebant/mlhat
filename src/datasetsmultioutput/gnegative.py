@@ -17,9 +17,9 @@ class Gnegative(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/GnegativePseAAC_Meka.zip",
             unpack=True,
             filename="GnegativePseAAC.arff",
-            size=3_041_079,
+            size=3_027_561,
         )
-    
+
     def _iter(self):
         return stream.iter_arff(
             self.path,

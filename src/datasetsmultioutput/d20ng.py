@@ -17,9 +17,9 @@ class D20ng(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/20NG_Meka.zip",
             unpack=True,
             filename="20NG.arff",
-            size=3_842_021,
+            size=3_846_896,
         )
-    
+
     def _iter(self):
         return stream.iter_arff(
             self.path,

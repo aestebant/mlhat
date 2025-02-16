@@ -18,13 +18,14 @@ class Nuswidec(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Nuswide_cVLADplus_Meka.zip",
             unpack=True,
             filename="Nuswide_cVLADplus.arff",
-            size=367_912_169,
+            size=464_257_823,
         )
-    
+
     def _iter(self):
         return stream.iter_arff(
             self.path,
             sparse=False,
+            drop=["image_name"],
             target=[
                 "zebra",
                 "window",

@@ -17,7 +17,7 @@ class Cal500(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/CAL500_Meka.zip",
             unpack=True,
             filename="CAL500.arff",
-            size=492_917,
+            size=492_869,
         )
 
     def _iter(self):

@@ -17,7 +17,7 @@ class Yeast(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Yeast_Meka.zip",
             unpack=True,
             filename="Yeast.arff",
-            size=2_416_740,
+            size=2_416_689,
         )
 
     def _iter(self):

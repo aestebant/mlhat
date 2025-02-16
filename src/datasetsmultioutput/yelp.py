@@ -17,7 +17,7 @@ class Yelp(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Yelp_Meka.zip",
             unpack=True,
             filename="Yelp.arff",
-            size=14_627_398,
+            size=14_627_346,
         )
 
     def _iter(self):

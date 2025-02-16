@@ -17,7 +17,7 @@ class Plant(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/PlantPseAAC_Meka.zip",
             unpack=True,
             filename="PlantPseAAC.arff",
-            size=2_259_332,
+            size=2_245_169,
         )
 
     def _iter(self):

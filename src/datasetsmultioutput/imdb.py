@@ -17,7 +17,7 @@ class Imdb(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Imdb_Meka.zip",
             unpack=True,
             filename="Imdb.arff",
-            size=15_406_129,
+            size=15_763_518,
         )
 
     def _iter(self):

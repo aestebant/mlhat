@@ -14,10 +14,10 @@ class Corel16k(base.RemoteDataset):
             n_samples=13766,
             n_features=500,
             n_outputs=153,
-            url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Corel16k_Meka.zip",
+            url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Corel16k001_Meka.zip",
             unpack=True,
             filename="Corel16k001.arff",
-            size=17_996_010,
+            size=17_995_960,
         )
 
     def _iter(self):

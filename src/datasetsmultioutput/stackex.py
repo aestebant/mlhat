@@ -17,7 +17,7 @@ class Stackex(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Stackex_chess_Meka.zip",
             unpack=True,
             filename="Stackex_chess.arff",
-            size=2_742_442,
+            size=2_742_392,
         )
 
     def _iter(self):

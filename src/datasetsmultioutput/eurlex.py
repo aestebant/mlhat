@@ -14,12 +14,12 @@ class Eurlex(base.RemoteDataset):
             n_samples=19348,
             n_features=5000,
             n_outputs=201,
-            url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Eurlex_Meka.zip",
+            url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Eurlex-sm_Meka.zip",
             unpack=True,
             filename="Eurlex-sm.arff",
-            size=61_714_811,
+            size=60_314_706,
         )
-    
+
     def _iter(self):
         return stream.iter_arff(
             self.path,

@@ -17,7 +17,7 @@ class Human(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/HumanPseAAC_Meka.zip",
             unpack=True,
             filename="HumanPseAAC.arff",
-            size=7_922_611,
+            size=7_869_568,
         )
 
     def _iter(self):

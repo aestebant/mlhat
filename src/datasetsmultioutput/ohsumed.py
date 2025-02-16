@@ -17,7 +17,7 @@ class Ohsumed(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Ohsumed_Meka.zip",
             unpack=True,
             filename="Ohsumed.arff",
-            size=3_423_747,
+            size=3_439_890,
         )
 
     def _iter(self):

@@ -17,7 +17,7 @@ class Slashdot(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Slashdot_Meka.zip",
             unpack=True,
             filename="Slashdot.arff",
-            size=244_980,
+            size=253_679,
         )
 
     def _iter(self):

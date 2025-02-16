@@ -17,9 +17,9 @@ class Bibtex(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Bibtex_Meka.zip",
             unpack=True,
             filename="Bibtex.arff",
-            size=3_505_238,
+            size=3_457_834,
         )
-    
+
     def _iter(self):
         return stream.iter_arff(
             self.path,

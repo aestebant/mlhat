@@ -17,7 +17,7 @@ class Eukaryote(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/EukaryotePseAAC_Meka.zip",
             unpack=True,
             filename="EukaryotePseAAC.arff",
-            size=18_877_490,
+            size=18_712_732,
         )
 
     def _iter(self):

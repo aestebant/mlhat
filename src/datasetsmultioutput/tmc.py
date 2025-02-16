@@ -17,9 +17,9 @@ class Tmc(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/tmc2007-500_Meka.zip",
             unpack=True,
             filename="tmc2007-500.arff",
-            size=4_094_596,
+            size=4_152_538,
         )
-    
+
     def _iter(self):
         return stream.iter_arff(
             self.path,

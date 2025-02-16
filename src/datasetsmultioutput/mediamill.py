@@ -17,7 +17,7 @@ class Mediamill(base.RemoteDataset):
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Mediamill_Meka.zip",
             unpack=True,
             filename="Mediamill.arff",
-            size=55_708_970,
+            size=55_708_920,
         )
 
     def _iter(self):
