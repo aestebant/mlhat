@@ -1,8 +1,9 @@
+from pathlib import Path
 from river.datasets import base
 import stream
 
 
-class Hypercube(base.RemoteDataset):
+class Hypercube(base.FileDataset):
     """
     Hyperspherical Learning in Multi-Label Classification
     """
@@ -12,12 +13,10 @@ class Hypercube(base.RemoteDataset):
             n_samples=100000,
             n_features=100,
             n_outputs=10,
-            url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Hypercube_Meka.zip",
-            unpack=True,
+            directory=Path(__file__).parent,
             filename="Hypercube.arff",
-            size=95_976_462,
         )
-    
+
     def _iter(self):
         return stream.iter_arff(
             self.path,
@@ -35,3 +34,6 @@ class Hypercube(base.RemoteDataset):
                 "y10",
             ],
         )
+
+    def __iter__(self):
+        return self._iter()
