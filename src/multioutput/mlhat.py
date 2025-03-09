@@ -1,8 +1,9 @@
 import math
+import numbers
 import random
 from collections import defaultdict
 
-from river import base
+from river import base, compose, preprocessing
 from river.drift import ADWIN
 from river.ensemble.bagging import BaggingClassifier
 from river.metrics.base import Metric
@@ -59,7 +60,6 @@ class MLHAT(MultiLabelHoeffdingTree):
         combined_prediction: bool = True,
         min_branch_fraction: float = 0.01,
         max_share_to_split: float = 0.99,
-        nominal_attributes: list = None,
         max_depth: int = None,
         max_size: float = 100,
         memory_estimate_period: int = 1000000,
@@ -74,7 +74,7 @@ class MLHAT(MultiLabelHoeffdingTree):
             max_depth=max_depth,
             delta=delta,
             tau=tau,
-            nominal_attributes=nominal_attributes,
+            nominal_attributes=None,
             splitter=splitter,
             binary_split=True,
             min_branch_fraction=min_branch_fraction,
