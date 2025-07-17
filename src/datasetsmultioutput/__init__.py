@@ -25,6 +25,7 @@ from .plant import Plant
 from .scene import Scene
 from .slashdot import Slashdot
 from .stackex import Stackex
+from .synth_loader import SynthLoader
 from .tmc import Tmc
 from .virus import VirusGO
 from .water_quality import WaterQuality
@@ -60,6 +61,7 @@ __all__ = [
     "Scene",
     "Slashdot",
     "Stackex",
+    "SynthLoader",
     "Tmc",
     "VirusGO",
     "WaterQuality",
