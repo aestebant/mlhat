@@ -2,7 +2,7 @@ from river.datasets import base
 import stream
 
 
-class Eukaryote(base.RemoteDataset):
+class EukaryotePseAac(base.RemoteDataset):
     """
     This dataset is used to predict the sub-cellular locations of proteins according to their sequences. It contains 7766 sequences for Eukaryote species. Both the GO (Gene ontology) features and PseAAC (including 20 amino acid, 20 pseudo-amino acid and 400 diptide components) are provided. There are 22 subcellular locations (acrosome, cell membrane, cell wall, centrosome, chloroplast, cyanelle, cytoplasm, cytoeskeleton, endoplasmatic reticulum, endosome, extracell, golgi apparatus, hydrogenosome, lysosome, melanosome, microsome, mitochondrion, nucleus, peroxisome, spindle pole body, synapse and vacuole).
 

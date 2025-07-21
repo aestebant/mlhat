@@ -2,7 +2,7 @@ from river.datasets import base
 import stream
 
 
-class Stackex(base.RemoteDataset):
+class StackexChess(base.RemoteDataset):
     """
     It is a collection of six datasets generated from the text collected in a selection of Stack Exchange forums. It includes stackex_chess, stackex_chemistry, stackex_coffee, stackex_cooking, stackex_cs and stackex_philosophy.
 

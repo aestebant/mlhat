@@ -2,7 +2,7 @@ from river.datasets import base
 import stream
 
 
-class Eurlex(base.RemoteDataset):
+class EurlexSm(base.RemoteDataset):
     """
     The EUR-Lex text collection is a collection of 19348 documents about European Union law. It contains many different types of documents, as treaties, legislation, case-law and legislative proposals, which are indexed according to several orthogonal categorization schemes to allow for multiple search facilities. The most important categorization is provided by the EUROVOC descriptors, which form a topic hierarchy with almost 4000 categories regarding different aspects of European law.
 
@@ -11,7 +11,7 @@ class Eurlex(base.RemoteDataset):
     def __init__(self):
         super().__init__(
             task=base.MO_BINARY_CLF,
-            n_samples=19348,
+            n_samples=19350,
             n_features=5000,
             n_outputs=201,
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Eurlex-sm_Meka.zip",

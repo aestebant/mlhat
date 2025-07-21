@@ -2,7 +2,7 @@ from river.datasets import base
 import stream
 
 
-class Plant(base.RemoteDataset):
+class PlantPseAAC(base.RemoteDataset):
     """
     This dataset is used to predict the sub-cellular locations of proteins according to their sequences. It contains 978 sequences for Plant species. Both the GO (Gene ontology) features and PseAAC (including 20 amino acid, 20 pseudo-amino acid and 400 diptide components) are provided. There are 12 subcellular locations (cell membrace, cell wall, chloroplast, cytoplasm, endoplasmic reticulum, extracellular, golgi apparatus, mitochondrion, nucleus, peroxisome, plastid, and vacuole).
 

@@ -2,7 +2,7 @@ from river.datasets import base
 import stream
 
 
-class Corel16k(base.RemoteDataset):
+class Corel16k001(base.RemoteDataset):
     """
     It is derived from the popular benchmark dataset ECCV 2002 by eliminating less frequently appeared labels.
 
@@ -11,7 +11,7 @@ class Corel16k(base.RemoteDataset):
     def __init__(self):
         super().__init__(
             task=base.MO_BINARY_CLF,
-            n_samples=13766,
+            n_samples=13770,
             n_features=500,
             n_outputs=153,
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Corel16k001_Meka.zip",

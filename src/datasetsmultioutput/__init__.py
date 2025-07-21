@@ -1,34 +1,37 @@
 from .bibtex import Bibtex
 from .birds import Birds
+from .bookmarks import Bookmarks
 from .cal500 import Cal500
-from .chd import Chd
+from .chd49 import Chd49
 from .corel5k import Corel5k
-from .corel16k import Corel16k
+from .corel16k001 import Corel16k001
 from .d20ng import D20ng
 from .emotions import Emotions
 from .enron import Enron
-from .eukaryote import Eukaryote
-from .eurlex import Eurlex
+from .eukaryotepseaac import EukaryotePseAac
+from .eurlexsm import EurlexSm
 from .flags import Flags
-from .imdb import Imdb
-from .human import Human
+from .genbase import Genbase
+from .gnegativepseaac import GnegativePseAac
+from .humanpseaac import HumanPseAac
 from .hypercube import Hypercube
 from .hypersphere import Hypersphere
-from .genbase import Genbase
-from .gnegative import Gnegative
+from .imdb import Imdb
 from .langlog import Langlog
 from .medical import Medical
 from .mediamill import Mediamill
-from .nuswidec import Nuswidec
+from .nuswidebow import NusWideBow
+from .nuswidecvladplus import NusWidecVLADplus
 from .ohsumed import Ohsumed
-from .plant import Plant
+from .plantpseaac import PlantPseAAC
+from .reutersk500 import ReutersK500
 from .scene import Scene
 from .slashdot import Slashdot
-from .stackex import Stackex
+from .stackexchess import StackexChess
 from .synth_loader import SynthLoader
-from .tmc import Tmc
-from .virus import VirusGO
-from .water_quality import WaterQuality
+from .tmc2007500 import Tmc2007500
+from .virusgo import VirusGO
+from .waterquality import WaterQuality
 from .yahoosociety import YahooSociety
 from .yeast import Yeast
 from .yelp import Yelp
@@ -36,33 +39,36 @@ from .yelp import Yelp
 __all__ = [
     "Bibtex",
     "Birds",
+    "Bookmarks",
     "Cal500",
-    "Chd",
+    "Chd49",
     "Corel5k",
-    "Corel16k",
+    "Corel16k001",
     "D20ng",
     "Emotions",
     "Enron",
-    "Eukaryote",
-    "Eurlex",
+    "EukaryotePseAac",
+    "EurlexSm",
     "Flags",
-    "Imdb",
-    "Human",
+    "Genbase",
+    "GnegativePseAac",
+    "HumanPseAac",
     "Hypercube",
     "Hypersphere",
-    "Genbase",
-    "Gnegative",
+    "Imdb",
     "Langlog",
     "Medical",
     "Mediamill",
-    "Nuswidec",
+    "NusWideBow",
+    "NusWidecVLADplus",
     "Ohsumed",
-    "Plant",
+    "PlantPseAAC",
+    "ReutersK500",
     "Scene",
     "Slashdot",
-    "Stackex",
+    "StackexChess",
     "SynthLoader",
-    "Tmc",
+    "Tmc2007500",
     "VirusGO",
     "WaterQuality",
     "YahooSociety",

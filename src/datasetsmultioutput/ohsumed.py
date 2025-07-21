@@ -11,7 +11,7 @@ class Ohsumed(base.RemoteDataset):
     def __init__(self):
         super().__init__(
             task=base.MO_BINARY_CLF,
-            n_samples=13929,
+            n_samples=13930,
             n_features=1002,
             n_outputs=23,
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Ohsumed_Meka.zip",

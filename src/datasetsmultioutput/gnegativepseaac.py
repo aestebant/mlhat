@@ -2,7 +2,7 @@ from river.datasets import base
 import stream
 
 
-class Gnegative(base.RemoteDataset):
+class GnegativePseAac(base.RemoteDataset):
     """
     This dataset is used to predict the sub-cellular locations of proteins according to their sequences. It contains 1392 sequences for Gram negative bacterial (Gnegative) species. Both the GO (Gene ontology) features and PseAAC (including 20 amino acid, 20 pseudo-amino acid and 400 diptide components) are provided. There are 8 subcellular locations (cell inner membrane, cell outer membrane, cytoplasm, extracellular, fimbrium, flagellum, nucleoid and periplasm).
 

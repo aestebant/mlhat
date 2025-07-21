@@ -2,7 +2,7 @@ from river.datasets import base
 import stream
 
 
-class Human(base.RemoteDataset):
+class HumanPseAac(base.RemoteDataset):
     """
     This dataset is used to predict the sub-cellular locations of proteins according to their sequences. It contains 3106 sequences for Human species. Both the GO (Gene ontology) features and PseAAC (including 20 amino acid, 20 pseudo-amino acid and 400 diptide components) are provided. There are 14 subcellular locations (centriole, cytoplasm, cytoskeleton, endoplasm reticulum, endosome, extracell, golgi apparatus, lysosome, microsome, mitochondrion, nucleus, peroxisome, plasma membrace, and synapse).
 

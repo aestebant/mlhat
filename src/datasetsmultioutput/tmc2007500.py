@@ -2,7 +2,7 @@ from river.datasets import base
 import stream
 
 
-class Tmc(base.RemoteDataset):
+class Tmc2007500(base.RemoteDataset):
     """
     It is a subset of the Aviation Safety Reporting System dataset. It contains 28596 aviation safety free text reports that the fligth crew submit after each flight about events that took place during the flight. The goal is to label the documents with respect to what types of problem they describe. The dataset has 49060 discrete attributes corresponding to terms in the collection. The safety reports are provided with 22 labels, each of them representing a problem type that appears during a flight.
 
@@ -11,7 +11,7 @@ class Tmc(base.RemoteDataset):
     def __init__(self):
         super().__init__(
             task=base.MO_BINARY_CLF,
-            n_samples=28596,
+            n_samples=28600,
             n_features=500,
             n_outputs=22,
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/tmc2007-500_Meka.zip",

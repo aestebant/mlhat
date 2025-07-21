@@ -2,7 +2,7 @@ from river.datasets import base
 import stream
 
 
-class Chd(base.RemoteDataset):
+class Chd49(base.RemoteDataset):
     """
     This dataset has information of coronary heart disease (CHD) in traditional Chinese medicine (TCM). This dataset has been filtered by specialist removing irrelevant features, keeping only 49 features.
 
@@ -19,7 +19,7 @@ class Chd(base.RemoteDataset):
             filename="CHD_49.arff",
             size=79_474,
         )
-    
+
     def _iter(self):
         return stream.iter_arff(
             self.path,

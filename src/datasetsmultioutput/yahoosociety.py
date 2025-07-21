@@ -11,7 +11,7 @@ class YahooSociety(base.RemoteDataset):
     def __init__(self) -> None:
         super().__init__(
             task=base.MO_BINARY_CLF,
-            n_samples=14512,
+            n_samples=14510,
             n_features=31802,
             n_outputs=27,
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Yahoo_Society_Meka.zip",

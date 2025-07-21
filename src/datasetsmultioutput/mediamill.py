@@ -11,7 +11,7 @@ class Mediamill(base.RemoteDataset):
     def __init__(self):
         super().__init__(
             task=base.MO_BINARY_CLF,
-            n_samples=43907,
+            n_samples=43910,
             n_features=120,
             n_outputs=101,
             url="http://www.uco.es/grupos/kdis/MLLResources/ucobigfiles/Datasets/Full/Mediamill_Meka.zip",
